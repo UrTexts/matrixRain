@@ -1,6 +1,6 @@
 # matrixRain
 Generate a matrix rain like the one in movie _matrix_ in your terminal
-This fork makes it so the terminal histeroy is erased.
+This fork makes it so the terminal history is erased.
 ## Usage
 1. Download the matrix.py file
 2. Open your terminal and run it with python, you can turn on different effect too.
