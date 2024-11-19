@@ -29,21 +29,26 @@ class matrix(object):
         self.cnt    = 0
         print(self.green + ''.join(sum(self.matrix, [])))
 
+    def clear_screen(self):
+        """Clears the screen and resets the terminal scrollback buffer."""
+        print("\033[H\033[J", end="")  # ANSI escape sequence to clear screen
+        print("\033[3J", end="")       # ANSI escape sequence to clear scrollback buffer
+
     def get_char(self):
         r = rand.random()
         if r > 0.5:
-            return unichr(rand.randrange(0x0021, 0x007E))
+            return chr(rand.randrange(0x0021, 0x007E))
         elif r > 0.2:
-            return unichr(rand.randrange(0x0180, 0x024F))
+            return chr(rand.randrange(0x0180, 0x024F))
         else:
-            return unichr(rand.randrange(0x16A0, 0x16F0))
+            return chr(rand.randrange(0x16A0, 0x16F0))
 
     def get_jp(self):
         r = rand.random()
         if r > 0.5:
-            return unichr(rand.randrange(0x0021, 0x007E)) + ' '
+            return chr(rand.randrange(0x0021, 0x007E)) + ' '
         else:
-            return unichr(rand.randrange(0x3041, 0x3097))
+            return chr(rand.randrange(0x3041, 0x3097))
 
     def run(self, colorful=False, jp=True, head=False):
         matrix = self.mat if jp else self.matrix
@@ -118,6 +123,7 @@ if __name__ == '__main__':
     rain = matrix()
     while True:
         try:
+            rain.clear_screen()  # Clear screen before each update
             rain.run(color, jp, head)
         except KeyboardInterrupt:
             subprocess.call(["clear"])
